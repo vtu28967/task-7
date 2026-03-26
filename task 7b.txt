@@ -1,0 +1,26 @@
+import java.util.*;
+public class ArrayListShort {
+ public static void main(String[] args) {
+ Scanner sc = new Scanner(System.in);
+ int n = sc.nextInt();
+ArrayList<String> names = new ArrayList<>();
+ ArrayList<Double> ratings = new ArrayList<>();
+ for (int i = 0; i < n; i++) {
+ names.add(sc.next());
+ ratings.add(sc.nextDouble());
+ }
+ ArrayList<Integer> index = new ArrayList<>();
+ for (int i = 0; i < n; i++) {
+ if (ratings.get(i) >= 8.0)
+ index.add(i);
+ }
+ index.sort((a, b) -> {
+ if (!ratings.get(a).equals(ratings.get(b)))
+ return Double.compare(ratings.get(b), ratings.get(a));
+ return names.get(a).compareTo(names.get(b));
+ });
+ for (int i : index)
+ System.out.println(names.get(i) + " " + ratings.get(i));
+ sc.close();
+ }
+}
